@@ -55,9 +55,9 @@ echo ""
 
 # 0. Set default path to Chrome application (by operating system type).
 # OS X
-CHROME_APP_PATH="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+#CHROME_APP_PATH="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 # Linux
-#CHROME_APP_PATH="/usr/bin/google-chrome"
+CHROME_APP_PATH="/usr/bin/google-chrome"
 # Windows
 #CHROME_APP_PATH="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
@@ -71,8 +71,7 @@ sleep 5 # Wait for tunnel to be ready before opening browser...
 
 # 2.Launch Chrome instance, referencing the proxy server.
 # TODO: Parameterize the chrome app path
-# eval $CHROME_APP_PATH \
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+ eval $CHROME_APP_PATH \
     "http://$DATAPROC_CLUSTER_NAME-m:$JUPYTER_PORT" \
     --proxy-server="socks5://localhost:10000" \
     --host-resolver-rules="MAP * 0.0.0.0 , EXCLUDE localhost" \
